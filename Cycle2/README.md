@@ -5,10 +5,10 @@ This program leverages LinkedIn Sales Navigator to obtain contacts from a target
 The program will obtain details for each employee, such as first name, last name, and title, and save those results to an sqllite database.
 
 ## Requirements
-python3
-LinkedIn Sales Navigator Account (30-day trials available)
-Valid session information from LinkedIn Sales Navigator Account
-LinkedIn Profile URL of an employee who works at the target company
+- python3
+- LinkedIn Sales Navigator Account (30-day trials available)
+- Valid session information from LinkedIn Sales Navigator Account
+- LinkedIn Profile URL of an employee who works at the target company
 
 ## Usage
 Log into LinkedIn Sales Navigator. Use your browser's development tools to find the relevant cookie values.
