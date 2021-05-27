@@ -37,8 +37,10 @@ It sure is! In 2019, a court court unanimously ruled that it was not illegal to 
 - Since the data on the LinkedIn site is available to the general public, it is not a violation of the Computer Fraud and Abuse Act (CFAA) to automate the collection of the data from LinkedIn’s site
 - Violating the Terms of Service (ToS) of a website does not necessarily mean that the CFAA has been violated
 
-Reference: Woollacott,E. (2019). LinkedIn Data Scraping Ruled Legal. Retrieved from https://www.forbes.com/sites/emmawoollacott/2019/09/10/linkedin-
-data-scraping-ruled-legal/#5fd64fbb1b54
+Reference: Woollacott,E. (2019). LinkedIn Data Scraping Ruled Legal. Retrieved from https://www.forbes.com/sites/emmawoollacott/2019/09/10/linkedin-data-scraping-ruled-legal/#5fd64fbb1b54
 
 ## Are there other tools that do this?
 I did not find any that were freely and publicly available that specifically leverage LinkedIn Sales Navigator
+
+## Video Demo
+https://www.youtube.com/watch?v=GTeD5ie8Ltc
