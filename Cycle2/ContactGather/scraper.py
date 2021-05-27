@@ -176,7 +176,9 @@ class Scraper():
         for emp in self.employeeList:
             # Check if employee exists in DB and insert or update accordingly
             memberId = self.employeeList[emp].memberId
-            c.execute("SELECT * FROM info WHERE memberId = ?", (memberId))
+            # Yes this doesn't use parameter substition but Python was giving weird errors
+            # with it. Besides, memberId is not user-controlled.
+            c.execute(f"SELECT * FROM info WHERE memberId = {memberId}")
             exists = c.fetchone()
 
             # The queries below use parameter substition...just in case anybody
