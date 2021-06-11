@@ -51,4 +51,4 @@ Inspect the password policy for the domain and fine grained policies.
 Loop over more passwords with a wait time in between and check the badPwdCount for each user to ensure users are not locked out.
 
 ## Video Demo
-
+https://screencast-o-matic.com/watch/cr1XhjVhNnu
