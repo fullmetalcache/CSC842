@@ -12,10 +12,10 @@ The program then gets a list of user accounts in the selected domain and applica
 
 For each user account, the program forms a list of targeted passwords based upon when the user last set their password (pwdLastSet). Currently, the program creates two passwords for each user and are of the form:
 
-- <SeasonSet><YearSet>
-- <MonthSet><YearSet>
+- \<SeasonSet\>\<YearSet\>
+- \<MonthSet\>\<YearSet\>
 
-In the case of <MonthSet><YearSet>, if the password that is formed is less than 8 characters then the program will add an exclamation point. This was chosen because, in my experience, most organizations have at least an 8-character minimum.
+In the case of \<MonthSet\>\<YearSet\>, if the password that is formed is less than 8 characters then the program will add an exclamation point. This was chosen because, in my experience, most organizations have at least an 8-character minimum.
 
 The program then tries the targeted list for each user and saves any credentials that it found to be valid. The program ensures that the number of current, invalid attempts for each user (badPwdCount) does not exceed 2 since the lockout for most organizations is at least 3 or more.
 
