@@ -1,4 +1,4 @@
-# HoneyAccount
+# HoneyAccounts
 
 C# Program to catch logon attacks, such as password spraying, within a Windows Active Directory environment.
 
