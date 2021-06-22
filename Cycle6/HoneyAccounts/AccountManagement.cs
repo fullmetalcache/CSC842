@@ -1,4 +1,14 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////
+// File: AccountManagement.cs
+// Author: Brian Fehrman
+// Date: 2021-06-21
+// Description: 
+//		Class for creating domain users based on a provided
+//		list of usernames, creating random passwords for the
+//		users, and then logging in as each of the users.
+///////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Linq;
@@ -19,6 +29,8 @@ namespace HoneyAccounts
         {
 
         }
+		
+		// Needed so we can use the LogonUser Windows API call
         [DllImport("advapi32.dll")]
         private static extern bool LogonUser(string name, string domain, string pass, int logType, int logpv, out IntPtr pht);
 
@@ -33,8 +45,13 @@ namespace HoneyAccounts
                 // Loop through each user in the provided list and add them to the domain
                 foreach (string username in users)
                 {
+					// Search for any existing users that match the 
+					// was provided username that
                     UserPrincipal userTemp = UserPrincipal.FindByIdentity(context, username);
 
+					// Delete the user if it already exists. This is
+					// so we don't need to know the previous password
+					// of the user
                     if (userTemp != null)
                     {
                         userTemp.Delete();
@@ -44,9 +61,11 @@ namespace HoneyAccounts
                     {
                         using (var userObj = new UserPrincipal(context))
                         {
+							// Create the basic user attributes
                             userObj.SamAccountName = username;
                             userObj.EmailAddress = String.Format("{0}@{1}", username, Environment.UserDomainName);
                             Console.WriteLine(userObj.EmailAddress);
+							
                             // No need to save the password, it will literally never be used
                             // after this function. When we update the password, we will just overwrite
                             // it with the new one without needing to know the old one.

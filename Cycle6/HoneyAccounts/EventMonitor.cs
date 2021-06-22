@@ -1,4 +1,13 @@
-﻿using System;
+﻿///////////////////////////////////////////////////////
+// File: EventMonitor.cs
+// Author: Brian Fehrman
+// Date: 2021-06-21
+// Description: 
+//		Class for monitoring and alerting on logins for
+//		a given list of honey accounts
+///////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -18,6 +27,8 @@ namespace HoneyAccounts
 
         private static List<string> _users;
 
+		// Perpetually monitor for new security events
+		// with a one second wait between each update check
         public void StartMonitoring(List<string> users)
         {
             _users = users;
@@ -38,10 +49,16 @@ namespace HoneyAccounts
         //https://stackoverflow.com/questions/53430475/reading-windows-logs-efficiently-and-fast
         private static void EventLog_EntryWritten(object sender, EntryWrittenEventArgs newEvent)
         {
+			// Check for failed logon event ID
             if (newEvent.Entry.EventID == 4625)
             {
+				// Get the username from the event
                 string accountName = newEvent.Entry.Message.Split("Logon Type")[1].Split("Account Name:")[1].Split("\r\n")[0].Trim();
-                foreach( string user in _users)
+                
+				// Check if the username for the failed logon event
+				// matches username in our monitoring list.
+				// Generate an alert if so
+				foreach( string user in _users)
                 {
                     if( accountName == user)
                     {
