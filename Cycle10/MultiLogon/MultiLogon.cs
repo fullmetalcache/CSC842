@@ -1,12 +1,16 @@
-﻿using System;
+﻿////////////////////////////////////////
+// File: MultiLogon.cs
+// Author: Brian Fehrman
+// Date: 2021-07-19
+// Description: Main class for monitoring for multiple logons from
+//              a single user
+////////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace MultiLogonDetect
 {
@@ -18,12 +22,7 @@ namespace MultiLogonDetect
         private static string _emailAddress = "";
         private static string _password = "";
 
-        struct sessionInfo
-        {
-            string systemIP;
-            List<string> logonIDs;
-        }
-
+        // Constructor for class
         public MultiLogon(string emailAddress, string password, string ignoreListFileName )
         {
             _logons = new Dictionary<string, Dictionary<string, List<string>>>();
@@ -51,7 +50,7 @@ namespace MultiLogonDetect
             file.Close();
         }
 
-        // Begin monitoring on a file
+        // Begin monitoring for multiple logons
         public void StartMonitoring()
         {
             var eventLog = new EventLog("Security")
@@ -118,8 +117,6 @@ namespace MultiLogonDetect
                 accountKey = accountName;
 
                 Console.WriteLine(accountKey + " " + computerIP + " " + logonID);
-
-               // Console.WriteLine(newEvent.Entry.Message);
 
                 // don't alert if the account is in the ignore list
                 if(_ignoreList.Contains(accountKey))

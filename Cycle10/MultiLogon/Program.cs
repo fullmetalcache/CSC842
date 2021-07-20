@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿////////////////////////////////////////
+// File: Program.cs
+// Author: Brian Fehrman
+// Date: 2021-07-19
+// Description: Main entry point for MultiLogon program
+////////////////////////////////////////
+
+using System;
 
 namespace MultiLogonDetect
 {
@@ -16,7 +19,7 @@ namespace MultiLogonDetect
 
             // Check for min number of arguments. Print usage message and exit if
             // insufficient arguments are provided
-            if (args.Length < 3)
+            if (args.Length < 2)
             {
                 Console.WriteLine("Usage: MultiLogon.exe emailAddress password [ignoreListFilename]");
                 return;
