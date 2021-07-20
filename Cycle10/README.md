@@ -3,7 +3,7 @@
 C# Program to catch suspicious logons within a Windows Active Directory environment.
   
 ## Monitoring and Alerting
-When a threat-actor compromises credentials on an internal network, they will sometimes use them to open multiple sessions in the environment. Most users will not have more than 1 or 2 sessions open. This program will
+When a threat-actor compromises credentials on an internal network, they will sometimes use them to open multiple sessions in the environment. Most users will not have more than 1 or 2 sessions open. This program will:
 - Track logon events for users (Security Event 4624)
 - Track logoff events for users (Security Event 4634)
 - Use logonID to correlate logons with logoffs
